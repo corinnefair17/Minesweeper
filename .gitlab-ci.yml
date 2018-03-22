@@ -1,0 +1,19 @@
+MineFieldGame:
+    script:
+        - wget -q -O junit.jar http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar > /dev/null
+        - wget -q -O hamcrest.jar http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar > /dev/null
+        - timeout 30 make minefieldgame
+
+MineFieldSave:
+    script:
+        - wget -q -O junit.jar http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar > /dev/null
+        - wget -q -O hamcrest.jar http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar > /dev/null
+        - timeout 30 make minefieldsave
+
+P3_MineSweeper-A-WebCat:
+    script:
+        - 'python3 webcat-submitter.py "CPSC 250/P3_MineSweeper_A_S18" MineSweeper.java'
+
+P3_MineSweeper-B-WebCat:
+    script:
+        - 'python3 webcat-submitter.py "CPSC 250/P3_MineSweeper_B_S18" MineSweeper.java'
