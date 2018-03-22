@@ -17,22 +17,22 @@ No arguments will create a random 8 x 8 minefield with 8 mines.
 
 From command line in the ``bin`` folder after compiling with Eclipse, here are some examples:
 * ``java MineSweeper``
- * Creates a 8x8 mine field with 8 mines and plays the game 
+ * Creates a 8x8 mine field with 8 mines and plays the game
 *  ``java MineSweeper -h``
  * prints the usage message
 * ``java MineSweeper -m 10 10 25``
- * Creates a 10 x 10 minefield with 25 randomly placed mines 
+ * Creates a 10 x 10 minefield with 25 randomly placed mines
 * ``java MineSweeper -m 10 10``
- * Prints an error message for invalid input (missing number of mines) and usage 
+ * Prints an error message for invalid input (missing number of mines) and usage
 * ``java MineSweeper -l my_file.txt``
  * Loads and validates the mine from the given file
  * If valid plays the game, if invalid then prints error message and quits.
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
 The arguments are mutally exclusive; on one is valid at a time.
 If multiple choices, or invalid arguements then print an error message, and then print the usage message.
 
@@ -58,12 +58,14 @@ You are not allowed to modify the given code MineField.java class.
 All of your code should be in the ``MineSweeper.java``
 
 ## Grading
-50 points 
+50 points
 * Due 3-April at 11:59PM
 * the ``printUsage`` and ``createMineField`` methods work via WebCat
+
 50 points
 * Due 12-April at 11:59PM
 * Style and JUnit tests on webcat for ``printUsage()``, ``createMineField()``, and ``checkWin()`` methods.
+
 50 points
 * Due 12-April at 11:59PM
 * complete game functions
@@ -74,7 +76,7 @@ All of your code should be in the ``MineSweeper.java``
 You are responsible for testing and design.
 The WebCat tests will not be uploaded until AFTER the due date.
 
-Do NOT go by your initial score on WebCat. 
+Do NOT go by your initial score on WebCat.
 
 YOU need to verify that your code works properly before I upload my tests.
 
