@@ -7,7 +7,7 @@ In this project, you will write code to play the MineSweeper game.
 
 The MineSweeper will accept command line arguments:
 * -h   print a help message and quit
- * create ``void printUsage()`` method that prints the command line options below
+ * create ``public static void printUsage()`` method that prints the command line options below
 * -m   <rows cols mines>  creates a MineField instance with rows, cols, and mines.
 * -l   <filename> load a saved minefield from file and create a MineField instance
 * -d   create a simple default game using default constructor
@@ -37,7 +37,7 @@ The arguments are mutally exclusive; on one is valid at a time.
 If multiple choices, or invalid arguements then print an error message, and then print the usage message.
 
 Define a method:
-*  MineField createGame(String[] args) that returns the appropriate MineField based on the arguments.
+*  ``public static MineField createGame(String[] args)`` that returns the appropriate MineField based on the arguments.
 
 Presuming a valid MineField is created, in the main method, you will call the createGame method, and then enter a loop where you:
 * Print the current game state (using the MineField.toString)
@@ -50,7 +50,7 @@ Presuming a valid MineField is created, in the main method, you will call the cr
   * if a mine is encountered, quit the game and print "You lose!"
 * If an invalid command is entered, print and error message and get another command
 * If no mine is encountered, then check to see if you won.
- * Add a method ``boolean checkWin(MineField mf)`` to check all unexposed cells, if only mines are unexposed, quit and print "You won!"
+ * Add a method ``public static boolean checkWin(MineField mf)`` to check all unexposed cells, if only mines are unexposed, quit and print "You won!"
  * If any non-mine cells are unexposed, then continue playing.
 
 You are not allowed to modify the given code MineField.java class.
