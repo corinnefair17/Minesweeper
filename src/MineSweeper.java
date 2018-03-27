@@ -7,9 +7,20 @@
  */
 
 // @todo - write this class as needed
-public class MineSweeper {
+public class MineSweeper 
+{
+    public static void printUsage()
+    {
+        String out = "-m creates a MineField with rows, cols, and mines\n";
+        out += "-l loads a saved minefield from field and creates a "
+                + "MineField instance\n";
+        out += "-d creates a simple default game using default constructor\n";
+        out += "-g loads an in-progress game";
+        
+        System.out.println(out);
+    }
 
-    //@todo -
+    // TODO -
     // MineField createMineField(String[] args)
     // boolean checkWin(MineField mf)
 
@@ -21,6 +32,6 @@ public class MineSweeper {
     {
 
 
-      //@todo - fix this
+      // TODO - fix this
     }
 }
