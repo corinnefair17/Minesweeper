@@ -11,7 +11,8 @@ public class MineSweeper
 {
     public static void printUsage()
     {
-        String out = "-m creates a MineField with rows, cols, and mines\n";
+        String out = "-h prints a help message and quits\n";
+        out += "-m creates a MineField with rows, cols, and mines\n";
         out += "-l loads a saved minefield from field and creates a "
                 + "MineField instance\n";
         out += "-d creates a simple default game using default constructor\n";
@@ -30,8 +31,10 @@ public class MineSweeper
      */
     public static void main(String[] args)
     {
-
-
-      // TODO - fix this
+        // TODO - fix this
+        if (String[0] = "-h")
+        {
+            printUsage();
+        }
     }
 }
