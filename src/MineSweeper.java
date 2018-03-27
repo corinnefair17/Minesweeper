@@ -32,7 +32,7 @@ public class MineSweeper
     public static void main(String[] args)
     {
         // TODO - fix this
-        if (String[0] = "-h")
+        if (args[0] == "-h")
         {
             printUsage();
         }
