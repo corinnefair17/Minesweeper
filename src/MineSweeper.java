@@ -1,12 +1,12 @@
 /**
  *  This is the class that will play the mine sweeper game
  *
- * @author <student>
+ * @author Corinne Fair
  * @version 0
  *
  */
 
-// @todo - write this class as needed
+// TODO - write this class as needed
 public class MineSweeper 
 {
     public static void printUsage()
@@ -32,7 +32,7 @@ public class MineSweeper
     public static void main(String[] args)
     {
         // TODO - fix this
-        if (args[0] == "-h")
+        if (args[0].equals("-h"))
         {
             printUsage();
         }
