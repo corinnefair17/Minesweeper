@@ -9,6 +9,9 @@
 // TODO - write this class as needed
 public class MineSweeper 
 {
+   /** The minefield */ 
+    private static MineField mf;
+    
     public static void printUsage()
     {
         String out = "-h prints a help message and quits\n";
@@ -21,8 +24,33 @@ public class MineSweeper
         System.out.println(out);
     }
 
+    public static MineField createMineField(String[] args)
+    {
+        if (args[1] == null)
+        {
+            mf = new MineField(8, 8, 8);
+            return mf;
+        }
+        
+        int num1 = Integer.parseInt(args[1]);
+        int num2 = Integer.parseInt(args[2]);
+        int num3 = Integer.parseInt(args[3]);
+        
+        if (num1 > 2 && num2 > 2 && num3 > 2)
+        {
+            mf = new MineField(num1, num2, num3);
+        }
+        else
+        {
+            System.out.println("Invalid usage.");
+            System.out.println(
+                    "Correct usage: java MineSweeper rows cols mines");
+            mf = null;
+        }
+        
+        return mf;
+    }
     // TODO -
-    // MineField createMineField(String[] args)
     // boolean checkWin(MineField mf)
 
     //
