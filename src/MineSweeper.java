@@ -12,6 +12,9 @@ public class MineSweeper
    /** The minefield */ 
     private static MineField mf;
     
+    /**
+     * prints how to use MineSweeper
+     */
     public static void printUsage()
     {
         String out = "-h prints a help message and quits\n";
@@ -24,6 +27,12 @@ public class MineSweeper
         System.out.println(out);
     }
 
+    /**
+     * Generates a MineField
+     * 
+     * @param args Command line arguments
+     * @return The generated MineFied
+     */
     public static MineField createMineField(String[] args)
     {
         if (args[1] == null)
@@ -53,8 +62,9 @@ public class MineSweeper
     // TODO -
     // boolean checkWin(MineField mf)
 
-    //
-    /** The game play will be handled in the main method
+    /** 
+     * The game play will be handled in the main method
+     * 
      * @param args - command line arguments
      */
     public static void main(String[] args)
