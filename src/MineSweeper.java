@@ -7,7 +7,7 @@
  */
 
 // TODO - write this class as needed
-public class MineSweeper 
+public class MineSweeper
 {
    /** The minefield */ 
     private static MineField mf;
@@ -60,7 +60,10 @@ public class MineSweeper
         return mf;
     }
     // TODO -
-    // boolean checkWin(MineField mf)
+    public static boolean checkWin(MineField mf)
+    {
+        return false;
+    }
 
     /** 
      * The game play will be handled in the main method
@@ -73,6 +76,11 @@ public class MineSweeper
         if (args[0].equals("-h"))
         {
             printUsage();
+        }
+        else if (args[0].equals("-m"))
+        {
+            mf = createMineField(args);
+            mf.toString();
         }
     }
 }

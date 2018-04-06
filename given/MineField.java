@@ -163,7 +163,7 @@ public class MineField {
      * @param col
      * @return true if valid array index; false otherwise
      */
-    private boolean isValidCell(Point cell) {
+    public boolean isValidCell(Point cell) {
 
         if (cell.x < 0 || cell.x >= field.length) {
             return false;
