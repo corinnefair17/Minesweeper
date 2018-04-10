@@ -90,7 +90,7 @@ public class MineSweeper
         else if (args[0].equals("-m"))
         {
             mf = createMineField(args);
-            mf.toString();
+            System.out.println(mf.toString());
         }
     }
 }
