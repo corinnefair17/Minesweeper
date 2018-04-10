@@ -35,7 +35,7 @@ public class MineSweeper
      */
     public static MineField createMineField(String[] args)
     {
-        if (args == null)
+        if (args == null || args.length == 0)
         {
             return null;
         }
