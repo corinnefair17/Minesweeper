@@ -60,7 +60,13 @@ public class MineSweeper
         return mf;
     }
     // TODO -
-    public static boolean checkWin(MineField mf)
+    /**
+     * checks to see if the game has been won
+     * 
+     * @param field The field in question
+     * @return True if the game is won, false otherwise
+     */
+    public static boolean checkWin(MineField field)
     {
         return false;
     }
