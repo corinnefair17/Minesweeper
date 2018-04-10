@@ -35,6 +35,10 @@ public class MineSweeper
      */
     public static MineField createMineField(String[] args)
     {
+        if (args == null)
+        {
+            return null;
+        }
         if (args[1] == null)
         {
             mf = new MineField(8, 8, 8);
