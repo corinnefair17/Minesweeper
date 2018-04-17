@@ -17,7 +17,8 @@ public class MineSweeper
      */
     public static void printUsage()
     {
-        String out = "Usage: java MineSweeper <command>\n";
+        String out = "\n";
+        out += "Usage: java MineSweeper <command>\n";
         out += " -- List of Commands -- \n";
         out += "-h prints this help message and quits\n";
         out += "-m <rows> <cols> <mines> creates a MineField with "
@@ -41,12 +42,19 @@ public class MineSweeper
     {
         if (args == null || args.length == 0)
         {
+            return new MineField(8, 8, 8);
+        }
+        if (args[0].equals("-h"))
+        {
             return null;
         }
-        if (args[1] == null)
+        if (args[0].equals("-d"))
         {
-            mf = new MineField(8, 8, 8);
-            return mf;
+            return new MineField();
+        }
+        if ((args[0].equals("-l") || args[0].equals("-g")) && args.length == 1)
+        {
+            return null;
         }
         
         int num1 = Integer.parseInt(args[1]);
@@ -86,15 +94,6 @@ public class MineSweeper
      */
     public static void main(String[] args)
     {
-        // TODO - fix this
-        if (args[0].equals("-h"))
-        {
-            printUsage();
-        }
-        else if (args[0].equals("-m"))
-        {
-            mf = createMineField(args);
-            System.out.println(mf.toString());
-        }
+        
     }
 }
