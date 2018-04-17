@@ -17,8 +17,12 @@ public class MineSweeper
      */
     public static void printUsage()
     {
-        String out = "-h prints a help message and quits\n";
-        out += "-m creates a MineField with rows, cols, and mines\n";
+        String out = "Usage: java MineSweeper <command>\n";
+        out += " -- List of Commands -- \n";
+        out += "-h prints this help message and quits\n";
+        out += "-m <rows> <cols> <mines> creates a MineField with "
+                + "a given number of rows, cols, and mines\n";
+        out += "    or a default field if called without any numbers\n";
         out += "-l loads a saved minefield from field and creates a "
                 + "MineField instance\n";
         out += "-d creates a simple default game using default constructor\n";
