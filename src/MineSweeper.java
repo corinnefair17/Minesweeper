@@ -1,3 +1,5 @@
+import java.io.File;
+
 /**
  *  This is the class that will play the mine sweeper game
  *
@@ -53,19 +55,45 @@ public class MineSweeper
         {
             return new MineField();
         }
+        if (args[0].equals("-m"))
+        {
+            if (args.length != 4)
+            {
+                System.out.println("Incorrect Usage\n"
+                        + "correct usage is java MineSweeper <rows> <cols> <mines>");
+                return null;
+            }
+            else
+            {
+                int rows = Integer.parseInt(args[1]);
+                int cols = Integer.parseInt(args[2]);
+                int mines = Integer.parseInt(args[3]);
+                
+                return new MineField(rows, cols, mines);
+            }
+        }
         if ((args[0].equals("-l") || args[0].equals("-g")) && args.length == 1)
         {
             return null;
         }
         else
         {
-            if (args[0].equals("-l"))
+            try
             {
-                mf = readMineFile(args[1]);
+                File file = new File(args[1]);
+                
+                if (args[0].equals("-l"))
+                {
+                    mf = MineFieldFileIO.readMineFile(args[1]);
+                }
+                if (args[0].equals("-g"))
+                {
+                    mf = MineFieldFileIO.readMineSweeperGame(args[1]);
+                }
             }
-            if (args[0].equals("-g"))
+            catch (Exception e)
             {
-                mf = readMineSweeperGame(args[1]);
+                return null;
             }
         }
             
@@ -90,10 +118,15 @@ public class MineSweeper
      */
     public static void main(String[] args)
     {
-        /*if (args[0].equals("-h"))
+        mf = createMineField(args);
+        
+        if (mf == null)
         {
-            printUsage();
-        }*/
-        createMineField(args);
+            System.out.println("Now quitting...");
+        }
+        else
+        {
+            System.out.println(mf.toString());
+        }
     }
 }
