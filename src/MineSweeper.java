@@ -59,8 +59,8 @@ public class MineSweeper
         {
             if (args.length != 4)
             {
-                System.out.println("Incorrect Usage\n"
-                        + "correct usage is java MineSweeper <rows> <cols> <mines>");
+                System.out.println("Incorrect Usage\nCorrect usage is "
+                        + "java MineSweeper <rows> <cols> <mines>");
                 return null;
             }
             else
@@ -72,16 +72,10 @@ public class MineSweeper
                 return new MineField(rows, cols, mines);
             }
         }
-        if ((args[0].equals("-l") || args[0].equals("-g")) && args.length == 1)
-        {
-            return null;
-        }
-        else
+        if ((args[0].equals("-l") || args[0].equals("-g")) && args.length == 2)
         {
             try
             {
-                File file = new File(args[1]);
-                
                 if (args[0].equals("-l"))
                 {
                     mf = MineFieldFileIO.readMineFile(args[1]);
@@ -95,6 +89,10 @@ public class MineSweeper
             {
                 return null;
             }
+        }
+        else
+        {
+            return null;
         }
             
         return mf;
