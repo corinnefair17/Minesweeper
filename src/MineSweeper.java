@@ -1,4 +1,3 @@
-import java.io.File;
 
 /**
  *  This is the class that will play the mine sweeper game
