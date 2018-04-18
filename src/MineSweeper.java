@@ -46,6 +46,7 @@ public class MineSweeper
         }
         if (args[0].equals("-h"))
         {
+            printUsage();
             return null;
         }
         if (args[0].equals("-d"))
@@ -56,23 +57,18 @@ public class MineSweeper
         {
             return null;
         }
-        
-        int num1 = Integer.parseInt(args[1]);
-        int num2 = Integer.parseInt(args[2]);
-        int num3 = Integer.parseInt(args[3]);
-        
-        if (num1 > 2 && num2 > 2 && num3 > 2)
-        {
-            mf = new MineField(num1, num2, num3);
-        }
         else
         {
-            System.out.println("Invalid usage.");
-            System.out.println(
-                    "Correct usage: java MineSweeper rows cols mines");
-            mf = null;
+            if (args[0].equals("-l"))
+            {
+                mf = readMineFile(args[1]);
+            }
+            if (args[0].equals("-g"))
+            {
+                mf = readMineSweeperGame(args[1]);
+            }
         }
-        
+            
         return mf;
     }
     // TODO -
@@ -94,6 +90,10 @@ public class MineSweeper
      */
     public static void main(String[] args)
     {
-        
+        /*if (args[0].equals("-h"))
+        {
+            printUsage();
+        }*/
+        createMineField(args);
     }
 }
