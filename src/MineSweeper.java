@@ -116,7 +116,18 @@ public class MineSweeper
      */
     public static boolean checkWin(MineField field)
     {
-        return false;
+        for (boolean[] i : mf.exposed)
+        {
+            for (boolean j : i)
+            {
+                if (!j)
+                {
+                    return false;
+                } // end if
+            } // end inner for
+        } // end outer for
+        
+        return true;
     }
 
     /** 
