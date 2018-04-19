@@ -23,12 +23,12 @@ public class MineSweeper
         out += " -- List of Commands -- \n";
         out += "-h prints this help message and quits\n";
         out += "-m <rows> <cols> <mines> creates a MineField with "
-                + "a given number of rows, cols, and mines\n";
-        out += "    or a default field if called without any numbers\n";
-        out += "-l loads a saved minefield from field and creates a "
-                + "MineField instance\n";
+                + "a given number of rows, cols,\n   and mines ";
+        out += "or a default field if called without any numbers\n";
+        out += "-l <filename.txt> loads a saved minefield from field and "
+                + "creates a MineField \n   instance\n";
         out += "-d creates a simple default game using default constructor\n";
-        out += "-g loads an in-progress game";
+        out += "-g <filename.txt> loads an in-progress game";
         
         System.out.println(out);
     }
@@ -64,11 +64,20 @@ public class MineSweeper
             }
             else
             {
-                int rows = Integer.parseInt(args[1]);
-                int cols = Integer.parseInt(args[2]);
-                int mines = Integer.parseInt(args[3]);
-                
-                return new MineField(rows, cols, mines);
+                try
+                {
+                    int rows = Integer.parseInt(args[1]);
+                    int cols = Integer.parseInt(args[2]);
+                    int mines = Integer.parseInt(args[3]);
+                    
+                    return new MineField(rows, cols, mines);
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Incorrect Usage\nCorrect usage is "
+                            + "java MineSweeper <rows> <cols> <mines>");
+                    return null;
+                }
             }
         }
         if ((args[0].equals("-l") || args[0].equals("-g")) && args.length == 2)
@@ -91,6 +100,8 @@ public class MineSweeper
         }
         else
         {
+            System.out.println("Incorrect Usage. "
+                    + "Type java MineSweeper -h for help.");
             return null;
         }
             
@@ -119,7 +130,7 @@ public class MineSweeper
         
         if (mf == null)
         {
-            System.out.println("Now quitting...");
+            System.out.println("\nNow quitting...");
         }
         else
         {
