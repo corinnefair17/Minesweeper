@@ -117,11 +117,11 @@ public class MineSweeper
      */
     public static boolean checkWin(MineField field)
     {
-        for (boolean[] i : mf.exposed)
+        for (int row = 0; row < mf.exposed.length; row++)
         {
-            for (boolean j : i)
+            for (int col = 0; col < mf.exposed[row].length; col++)
             {
-                if (!j)
+                if (!mf.exposed[row][col] && mf.field[row][col] != -1)
                 {
                     return false;
                 } // end if
@@ -141,7 +141,7 @@ public class MineSweeper
         mf = createMineField(args);
         Scanner in = new Scanner(System.in);
         
-        if (mf == null)
+        if (mf == null) // create minefield returns null - invalid usage
         {
             System.out.println("\nNow quitting...");
         }
@@ -149,26 +149,78 @@ public class MineSweeper
         {
             while (true)
             {
+                // prints the minefield + a command prompt & waits for input
                 System.out.println(mf.toString());
                 System.out.println();
                 System.out.print(" >>> ");
                 String command = in.nextLine();
                 
-                if (command.equals("quit"))
+                String[] coms = command.split(" ");
+                
+                if (coms[0].equals("quit")) // quit command
                 {
                     System.out.println("You lose!");
                     break;
                 }
-                else
+                // save command + file name
+                else if (coms[0].equals("save") && coms.length == 2)
                 {
-                    System.out.println("Invalid command. Commands are:\n"
+                    boolean saved = MineFieldFileIO.saveMineSweeperGame(
+                            mf, coms[1]);
+                    
+                    if (saved) // game successfully saved
+                    {
+                        System.out.println("Game saved to " + coms[1]);
+                        System.out.println("\nNow quitting...");
+                        break;
+                    }
+                }
+                else if (coms.length == 2)
+                {
+                    try // if both commands are ints
+                    {
+                        int row = Integer.parseInt(coms[0]);
+                        int col = Integer.parseInt(coms[1]);
+                        
+                        mf.exposeCell(row, col);
+                        
+                        if (checkWin(mf))
+                        {
+                            System.out.println(mf.toString());
+                            System.out.println();
+                            System.out.println("You won!");
+                            break;
+                        }
+                        if (mf.field[row][col] == -1)
+                        {
+                            System.out.println(mf.toString());
+                            System.out.println();
+                            System.out.println("You lose!");
+                            break;
+                        }
+                    }
+                    catch (Exception e) // both commands are not ints
+                    {
+                        System.out.println("\nInvalid command. Commands are:\n"
+                                + "quit: quits the game\n"
+                                + "save <filename>: saves the game to a given "
+                                + "file name and quits\n"
+                                + "<row> <col>: exposes the cell at the given "
+                                + "location\n");
+                    }
+                }
+                else // command is not valid
+                {
+                    System.out.println("\nInvalid command. Commands are:\n"
                             + "quit: quits the game\n"
                             + "save <filename>: saves the game to a given "
                             + "file name and quits\n"
                             + "<row> <col>: exposes the cell at the given "
                             + "location\n");
-                }
-            }
-        }
-    }
-}
+                } // end else
+            } // end while
+        } // end else
+        
+        in.close();
+    } // end main
+} // end class
