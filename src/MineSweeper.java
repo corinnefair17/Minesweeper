@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 /**
  *  This is the class that will play the mine sweeper game
@@ -107,7 +108,7 @@ public class MineSweeper
             
         return mf;
     }
-    // TODO -
+
     /**
      * checks to see if the game has been won
      * 
@@ -138,6 +139,7 @@ public class MineSweeper
     public static void main(String[] args)
     {
         mf = createMineField(args);
+        Scanner in = new Scanner(System.in);
         
         if (mf == null)
         {
@@ -145,7 +147,28 @@ public class MineSweeper
         }
         else
         {
-            System.out.println(mf.toString());
+            while (true)
+            {
+                System.out.println(mf.toString());
+                System.out.println();
+                System.out.print(" >>> ");
+                String command = in.nextLine();
+                
+                if (command.equals("quit"))
+                {
+                    System.out.println("You lose!");
+                    break;
+                }
+                else
+                {
+                    System.out.println("Invalid command. Commands are:\n"
+                            + "quit: quits the game\n"
+                            + "save <filename>: saves the game to a given "
+                            + "file name and quits\n"
+                            + "<row> <col>: exposes the cell at the given "
+                            + "location\n");
+                }
+            }
         }
     }
 }
