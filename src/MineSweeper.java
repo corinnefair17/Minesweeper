@@ -42,30 +42,36 @@ public class MineSweeper
      */
     public static MineField createMineField(String[] args)
     {
+        // if no arguments - default case
         if (args == null || args.length == 0)
         {
             return new MineField(8, 8, 8);
         }
+        // help message
         if (args[0].equals("-h"))
         {
             printUsage();
             return null;
         }
+        // default minefield - 3 x 3
         if (args[0].equals("-d"))
         {
             return new MineField();
         }
+        // minefield with given rows, cols, mines
         if (args[0].equals("-m"))
         {
+            // if there aren't enough/too many params
             if (args.length != 4)
             {
                 System.out.println("Incorrect Usage\nCorrect usage is "
                         + "java MineSweeper <rows> <cols> <mines>");
                 return null;
             }
+            // creates specified minefield
             else
             {
-                try
+                try // can the args be parse to ints?
                 {
                     int rows = Integer.parseInt(args[1]);
                     int cols = Integer.parseInt(args[2]);
@@ -73,17 +79,18 @@ public class MineSweeper
                     
                     return new MineField(rows, cols, mines);
                 }
-                catch (Exception e)
+                catch (Exception e) // the args are not ints
                 {
                     System.out.println("Incorrect Usage\nCorrect usage is "
                             + "java MineSweeper <rows> <cols> <mines>");
                     return null;
-                }
-            }
-        }
+                } // end try/catch
+            } // end else
+        } // end if
+        // load game + filename
         if ((args[0].equals("-l") || args[0].equals("-g")) && args.length == 2)
         {
-            try
+            try // is the file name legit?
             {
                 if (args[0].equals("-l"))
                 {
@@ -94,11 +101,12 @@ public class MineSweeper
                     mf = MineFieldFileIO.readMineSweeperGame(args[1]);
                 }
             }
-            catch (Exception e)
+            catch (Exception e) // the file name is not good
             {
                 return null;
             }
         }
+        // default usage message
         else
         {
             System.out.println("Incorrect Usage. "
@@ -184,14 +192,14 @@ public class MineSweeper
                         
                         mf.exposeCell(row, col);
                         
-                        if (checkWin(mf))
+                        if (checkWin(mf)) // checks for a win after each move
                         {
                             System.out.println(mf.toString());
                             System.out.println();
                             System.out.println("You won!");
                             break;
                         }
-                        if (mf.field[row][col] == -1)
+                        if (mf.field[row][col] == -1) // if a mine is hit
                         {
                             System.out.println(mf.toString());
                             System.out.println();
